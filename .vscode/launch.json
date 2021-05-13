@@ -1,0 +1,20 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    // clicar no play com o inseto e clicar em launch a json file
+    "version": "0.2.0",
+    "configurations": [ // ir no package json e colocar no tsnode dev e colocar uma opção --inspect
+        {
+            "type": "node", // mudamos o type de pwa pra node
+            "request": "attach", // colocamos isso no nosso servidor que está rrodando
+            "name": "Launch Program",
+            "skipFiles": [
+                "<node_internals>/**"
+            ], // removemos a parte aqui a baixo de program
+            "outFiles": [
+                "${workspaceFolder}/**/*.js"
+            ]
+        }
+    ]
+}
