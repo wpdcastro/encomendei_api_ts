@@ -22,7 +22,7 @@ class User {
   confirmedEmail: boolean;
 
   @Column()
-  cpfOrCnpj: string;
+  cpf: string;
 
   @Column()
   password: string;
