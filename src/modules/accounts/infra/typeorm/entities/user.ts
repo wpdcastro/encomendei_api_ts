@@ -19,6 +19,9 @@ class User {
   email: string;
 
   @Column()
+  confirmedEmail: boolean;
+
+  @Column()
   cpfOrCnpj: string;
 
   @Column()

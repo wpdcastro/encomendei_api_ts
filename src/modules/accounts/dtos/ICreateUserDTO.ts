@@ -3,6 +3,7 @@ export default interface ICreateUserDTO {
   password: string;
   email: string;
   cpfOrCnpj: string;
+  confirmedEmail?: boolean;
   id?: string;
   isShopkeeper: boolean;
 }

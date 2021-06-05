@@ -1,16 +1,29 @@
+import { ConfirmationUserController } from '@modules/accounts/useCases/confirmateUser/ConfirmationUserController';
 import CreateUserController from '@modules/accounts/useCases/createUser/CreateUserController';
 import { DeleteUserController } from '@modules/accounts/useCases/deleteUser/DeleteUserController';
+import { SendConfirmationUserMailController } from '@modules/accounts/useCases/sendConfirmateUserMail.ts/SendConfirmationUserMailController';
 import { Router } from 'express';
 
-import ensureAuthenticated from '../middlewares/ensureAtuthenticated';
+import ensureAuthenticated from '../middlewares/ensureAuthenticated';
 
 const usersRouter = Router();
 
 const createUserController = new CreateUserController();
 const deleteUserController = new DeleteUserController();
+const sendConfirmationMailUserController =
+  new SendConfirmationUserMailController();
+const confirmationUserController = new ConfirmationUserController();
 
 usersRouter.post('/', createUserController.handle);
 
 usersRouter.delete('/delete', ensureAuthenticated, deleteUserController.handle);
+
+usersRouter.post(
+  '/sendConfirmationMail',
+  ensureAuthenticated,
+  sendConfirmationMailUserController.handle,
+);
+
+usersRouter.post('/confirmation', confirmationUserController.handle);
 
 export default usersRouter;
