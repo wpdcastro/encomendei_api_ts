@@ -21,6 +21,11 @@ export default class CreateUsers1620928050333 implements MigrationInterface {
             isUnique: true,
           },
           {
+            name: 'cpfOrCnpj',
+            type: 'varchar',
+            isUnique: true,
+          },
+          {
             name: 'password',
             type: 'varchar',
           },

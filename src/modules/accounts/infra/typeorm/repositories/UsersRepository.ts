@@ -14,6 +14,7 @@ export default class UsersRepository implements IUsersRepository {
   async create({
     name,
     email,
+    cpfOrCnpj,
     password,
     isShopkeeper,
     id,
@@ -21,6 +22,7 @@ export default class UsersRepository implements IUsersRepository {
     const user = this.repository.create({
       name,
       email,
+      cpfOrCnpj,
       password,
       isShopkeeper,
       id,
@@ -36,6 +38,12 @@ export default class UsersRepository implements IUsersRepository {
   }
   async findById(id: string): Promise<User> {
     const user = await this.repository.findOne(id);
+
+    return user;
+  }
+
+  async findByCpfOrCnpj(cpfOrCnpj: string): Promise<User> {
+    const user = await this.repository.findOne({ cpfOrCnpj });
 
     return user;
   }

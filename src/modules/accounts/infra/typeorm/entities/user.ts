@@ -19,6 +19,9 @@ class User {
   email: string;
 
   @Column()
+  cpfOrCnpj: string;
+
+  @Column()
   password: string;
 
   @Column()
