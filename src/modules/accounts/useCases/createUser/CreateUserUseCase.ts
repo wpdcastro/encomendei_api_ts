@@ -16,6 +16,7 @@ export default class CreateUserUseCase {
   ) {}
 
   async execute({
+    id,
     name,
     password,
     cpf,
@@ -49,6 +50,7 @@ export default class CreateUserUseCase {
     const passwordHash = await hash(password, 8);
 
     await this.usersRepository.create({
+      id,
       name,
       email,
       cpf,
