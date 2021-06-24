@@ -90,7 +90,7 @@ describe('Confirmation User', () => {
 
     const userToConfirm = await usersRepository.findByCpf(userCpf);
 
-    const expires_date = new Date('2020-05-20');
+    const expires_date = new Date('2021-05-20');
 
     const token = uuidV4();
 

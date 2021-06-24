@@ -1,7 +1,7 @@
 import { ConfirmationUserController } from '@modules/accounts/useCases/confirmUser/ConfirmationUserController';
 import CreateUserController from '@modules/accounts/useCases/createUser/CreateUserController';
 import { DeleteUserController } from '@modules/accounts/useCases/deleteUser/DeleteUserController';
-import { SendConfirmationUserMailController } from '@modules/accounts/useCases/sendConfirmateUserMail.ts/SendConfirmationUserMailController';
+import { SendConfirmationUserMailController } from '@modules/accounts/useCases/sendConfirmateUserMail/SendConfirmationUserMailController';
 import { ShowProfileUserController } from '@modules/accounts/useCases/showProfileUser/ShowProfileUserController';
 import { Router } from 'express';
 

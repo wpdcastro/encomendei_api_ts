@@ -4,6 +4,12 @@ services:
   database_encomendei:
     image: postgres
     container_name: database_encomendei
+    deploy:
+      resources:
+        limits:
+          memory: 4096M
+        reservations:
+          memory: 2048M
     restart: always
     ports:
       - 5432:5432
@@ -13,6 +19,7 @@ services:
       - POSTGRES_DB=encomendei
     volumes:
       - pgdata:/data/postgres
+
   app:
     build: .
     container_name: encomendei
@@ -26,7 +33,7 @@ services:
     depends_on:
       - database_encomendei
 
-
 volumes:
   pgdata:
     driver: local
+

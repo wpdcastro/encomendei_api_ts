@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable import/no-extraneous-dependencies */
-import express, { NextFunction, Request, Response } from 'express';
 import 'reflect-metadata';
+import express, { NextFunction, Request, Response } from 'express';
 
 import 'express-async-errors';
 
