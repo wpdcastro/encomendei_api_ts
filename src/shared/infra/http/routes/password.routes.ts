@@ -10,4 +10,4 @@ const resetPasswordUSerController = new ResetPasswordUserController();
 passwordRoutes.post('/forgot', sendForgotPasswordMailController.handle);
 passwordRoutes.post('/reset', resetPasswordUSerController.handle);
 
-export { passwordRoutes };
+export default passwordRoutes;

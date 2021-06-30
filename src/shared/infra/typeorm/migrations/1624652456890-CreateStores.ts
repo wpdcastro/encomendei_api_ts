@@ -41,6 +41,7 @@ export default class CreateStores1624652456890 implements MigrationInterface {
           {
             name: 'address_id',
             type: 'uuid',
+            isNullable: true,
           },
           {
             name: 'created_at',
