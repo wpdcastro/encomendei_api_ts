@@ -2,10 +2,14 @@ import {
   Column,
   CreateDateColumn,
   Entity,
+  JoinColumn,
+  OneToOne,
   PrimaryColumn,
   UpdateDateColumn,
 } from 'typeorm';
 import { v4 as uuidV4 } from 'uuid';
+
+import { Store } from './Store';
 
 export enum AddressType {
   WORK = 'work',
@@ -30,6 +34,12 @@ class Address {
   district: string;
 
   @Column()
+  street: string;
+
+  @Column()
+  cep: string;
+
+  @Column()
   number?: string;
 
   @Column()
@@ -39,10 +49,17 @@ class Address {
   type_address: AddressType;
 
   @Column()
-  phone: string;
+  phone: number;
 
   @Column()
   additional_indications?: string;
+
+  @OneToOne(() => Store)
+  @JoinColumn({ name: 'store_id' })
+  store: Store;
+
+  @Column()
+  store_id?: string;
 
   @CreateDateColumn()
   created_at: Date;

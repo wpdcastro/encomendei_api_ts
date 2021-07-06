@@ -52,6 +52,10 @@ class StoresRepository implements IStoresRepository {
 
     return store;
   }
+
+  async findById(id: string): Promise<Store> {
+    return this.repository.findOne(id);
+  }
 }
 
 export { StoresRepository };

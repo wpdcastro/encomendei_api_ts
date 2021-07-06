@@ -1,4 +1,9 @@
-import { MigrationInterface, QueryRunner, Table } from 'typeorm';
+import {
+  MigrationInterface,
+  QueryRunner,
+  Table,
+  TableForeignKey,
+} from 'typeorm';
 
 export default class CreateAddress1624907014279 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
@@ -37,6 +42,10 @@ export default class CreateAddress1624907014279 implements MigrationInterface {
             isNullable: true,
           },
           {
+            name: 'cep',
+            type: 'varchar',
+          },
+          {
             name: 'apartment_number',
             type: 'varchar',
             isNullable: true,
@@ -56,6 +65,11 @@ export default class CreateAddress1624907014279 implements MigrationInterface {
             isNullable: true,
           },
           {
+            name: 'store_id',
+            type: 'uuid',
+            isNullable: true,
+          },
+          {
             name: 'created_at',
             type: 'timestamp',
             default: 'now()',
@@ -68,9 +82,23 @@ export default class CreateAddress1624907014279 implements MigrationInterface {
         ],
       }),
     );
+
+    await queryRunner.createForeignKey(
+      'addresses',
+      new TableForeignKey({
+        name: 'FKAddressesStore',
+        referencedTableName: 'stores',
+        referencedColumnNames: ['id'],
+        columnNames: ['store_id'],
+        onDelete: 'SET NULL',
+        onUpdate: 'SET NULL',
+      }),
+    );
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
+    await queryRunner.dropForeignKey('addresses', 'FKAddressesStore');
+
     await queryRunner.dropTable('addresses');
   }
 }

@@ -5,4 +5,5 @@ export interface IStoresRepository {
   create(data: ICreateStoreDTO): Promise<Store>;
   findByUserId(user_id: string): Promise<Store>;
   findByCnpj(cnpj: string): Promise<Store>;
+  findById(id: string): Promise<Store>;
 }
