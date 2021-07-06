@@ -6,4 +6,5 @@ export interface IStoresRepository {
   findByUserId(user_id: string): Promise<Store>;
   findByCnpj(cnpj: string): Promise<Store>;
   findById(id: string): Promise<Store>;
+  deleteById(id: string): Promise<void>;
 }

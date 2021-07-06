@@ -56,6 +56,10 @@ class StoresRepository implements IStoresRepository {
   async findById(id: string): Promise<Store> {
     return this.repository.findOne(id);
   }
+
+  async deleteById(id: string): Promise<void> {
+    await this.repository.delete(id);
+  }
 }
 
 export { StoresRepository };

@@ -29,14 +29,12 @@ class CreateStoreUseCase {
     isDelivery,
     user_id,
   }: IRequest): Promise<Store> {
-    if (cnpj.length !== 14) {
-      throw new AppError('Invalid field, must be 14 digits for cnpj');
-    }
+    if (cnpj) {
+      const cnpjIsValid = cnpjValidator.isValid(cnpj);
 
-    const cnpjIsValid = cnpjValidator.isValid(cnpj);
-
-    if (!cnpjIsValid) {
-      throw new AppError('CNPJ is invalid');
+      if (!cnpjIsValid) {
+        throw new AppError('CNPJ is invalid');
+      }
     }
 
     const storeAlreadyExists = await this.storeRepository.findByUserId(user_id);

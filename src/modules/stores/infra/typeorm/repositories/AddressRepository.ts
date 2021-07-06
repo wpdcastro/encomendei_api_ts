@@ -50,6 +50,10 @@ class AddressRepository implements IAddressRepository {
   async findByStoreId(store_id: string): Promise<Address> {
     return this.repository.findOne({ store_id });
   }
+
+  async deleteById(id: string): Promise<void> {
+    await this.repository.delete(id);
+  }
 }
 
 export { AddressRepository };
