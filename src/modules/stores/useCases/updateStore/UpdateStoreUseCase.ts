@@ -1,4 +1,3 @@
-import IUsersRepository from '@modules/accounts/repositories/IUsersRepository';
 import { Store } from '@modules/stores/infra/typeorm/entities/Store';
 import { IStoresRepository } from '@modules/stores/repositories/IStoresRepository';
 import { cnpj as cnpjValidator } from 'cpf-cnpj-validator';
@@ -13,25 +12,24 @@ interface IRequest {
   phone: string;
   isDelivery: boolean;
   user_id: string;
+  store_id: string;
 }
 
 @injectable()
-class CreateStoreUseCase {
+class UpdateStoreUseCase {
   constructor(
     @inject('StoresRepository')
     private storeRepository: IStoresRepository,
-
-    @inject('UsersRepository')
-    private usersRepository: IUsersRepository,
   ) {}
 
   async execute({
+    store_id,
     name,
     description,
-    cnpj,
     phone,
     isDelivery,
     user_id,
+    cnpj,
   }: IRequest): Promise<Store> {
     if (cnpj) {
       const cnpjIsValid = cnpjValidator.isValid(cnpj);
@@ -41,35 +39,23 @@ class CreateStoreUseCase {
       }
     }
 
-    const storeAlreadyExists = await this.storeRepository.findByUserId(user_id);
-
-    if (storeAlreadyExists) {
-      throw new AppError('Store with this user already exists');
-    }
-
     const cnpjAlreadyRegistered = await this.storeRepository.findByCnpj(cnpj);
 
     if (cnpjAlreadyRegistered) {
-      throw new AppError('this cnpj is already registered');
+      throw new AppError('This cnpj is already registered');
     }
 
     const store = await this.storeRepository.create({
+      id: store_id,
       name,
       description,
-      cnpj,
       phone,
       isDelivery,
       user_id,
     });
 
-    const user = await this.usersRepository.findById(user_id);
-
-    user.isShopkeeper = true;
-
-    await this.usersRepository.create(user);
-
     return store;
   }
 }
 
-export { CreateStoreUseCase };
+export { UpdateStoreUseCase };
