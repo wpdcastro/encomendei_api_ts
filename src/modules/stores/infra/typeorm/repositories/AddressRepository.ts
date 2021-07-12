@@ -25,6 +25,7 @@ class AddressRepository implements IAddressRepository {
     additional_indications,
     store_id,
     id,
+    updated_at,
   }: ICreateStoreAddressDTO): Promise<Address> {
     const Address = this.repository.create({
       name,
@@ -40,6 +41,7 @@ class AddressRepository implements IAddressRepository {
       additional_indications,
       store_id,
       id,
+      updated_at,
     });
 
     await this.repository.save(Address);

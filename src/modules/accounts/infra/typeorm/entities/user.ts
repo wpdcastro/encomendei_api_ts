@@ -28,10 +28,10 @@ class User {
   password: string;
 
   @Column()
-  isAdmin: boolean;
+  isAdmin?: boolean;
 
   @Column()
-  isShopkeeper: boolean;
+  isShopkeeper?: boolean;
 
   @CreateDateColumn()
   created_at: Date;

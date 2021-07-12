@@ -1,4 +1,4 @@
-import { StoreCategory } from '../infra/typeorm/entities/StoreCategoy';
+import { StoreCategory } from '../infra/typeorm/entities/StoreCategory';
 
 export interface ICreateStoreDTO {
   id?: string;

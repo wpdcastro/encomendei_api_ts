@@ -14,4 +14,5 @@ export interface ICreateStoreAddressDTO {
   phone: number;
   additional_indications?: string;
   store_id?: string;
+  updated_at?: Date;
 }

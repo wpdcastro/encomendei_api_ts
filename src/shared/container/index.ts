@@ -8,8 +8,10 @@ import { UsersTokensRepository } from '@modules/accounts/infra/typeorm/repositor
 import IUsersRepository from '@modules/accounts/repositories/IUsersRepository';
 import { IUsersTokensRepository } from '@modules/accounts/repositories/IUsersTokensRepository';
 import { AddressRepository } from '@modules/stores/infra/typeorm/repositories/AddressRepository';
+import { StoreCategoryRepository } from '@modules/stores/infra/typeorm/repositories/StoreCategoryRepository';
 import { StoresRepository } from '@modules/stores/infra/typeorm/repositories/StoresRepository';
 import { IAddressRepository } from '@modules/stores/repositories/IAddressRepository';
+import { IStoreCategoryRepository } from '@modules/stores/repositories/IStoreCategoryRepository';
 import { IStoresRepository } from '@modules/stores/repositories/IStoresRepository';
 
 container.registerSingleton<IUsersRepository>(
@@ -30,4 +32,9 @@ container.registerSingleton<IStoresRepository>(
 container.registerSingleton<IAddressRepository>(
   'AddressesRepository',
   AddressRepository,
+);
+
+container.registerSingleton<IStoreCategoryRepository>(
+  'StoreCategoryRepository',
+  StoreCategoryRepository,
 );

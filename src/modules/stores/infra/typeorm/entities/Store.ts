@@ -13,7 +13,7 @@ import {
 import { v4 as uuidV4 } from 'uuid';
 
 import { Address } from './Address';
-import { StoreCategory } from './StoreCategoy';
+import { StoreCategory } from './StoreCategory';
 
 @Entity('stores')
 class Store {

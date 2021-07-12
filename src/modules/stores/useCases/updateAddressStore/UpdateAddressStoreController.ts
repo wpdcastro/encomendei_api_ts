@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 import { container } from 'tsyringe';
 
-import { UpdateStoreAddressStoreUseCase } from './UdpateAddressUseCase';
+import { UpdateStoreAddressStoreUseCase } from './UpdateAddressStoreUseCase';
 
 class UpdateStoreAddressStoreController {
   async handle(request: Request, response: Response): Promise<Response> {
