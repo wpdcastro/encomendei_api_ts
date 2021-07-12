@@ -55,7 +55,7 @@ class Store {
     joinColumns: [{ name: 'store_id' }],
     inverseJoinColumns: [{ name: 'store_category_id' }],
   })
-  storeCategories?: StoreCategory[];
+  storeCategories: StoreCategory[];
 
   @CreateDateColumn()
   created_at: Date;

@@ -34,6 +34,12 @@ class StoreCategoryRepository implements IStoreCategoryRepository {
 
     return storeCategory;
   }
+
+  async findByIds(ids: string[]): Promise<StoreCategory[]> {
+    const storeCategories = await this.repository.findByIds(ids);
+
+    return storeCategories;
+  }
 }
 
 export { StoreCategoryRepository };

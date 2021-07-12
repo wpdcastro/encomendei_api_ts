@@ -22,10 +22,6 @@ export default class CreateUserUseCase {
     email,
     isShopkeeper,
   }: ICreateUserDTO): Promise<void> {
-    if (cpf.length !== 11) {
-      throw new AppError('Invalid field, must be 11 digits for cpf');
-    }
-
     const cpfIsValid = cpfValidator.isValid(cpf);
 
     if (!cpfIsValid) {

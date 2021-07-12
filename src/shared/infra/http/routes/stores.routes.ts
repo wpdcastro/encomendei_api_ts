@@ -1,4 +1,5 @@
 import { CreateStoreAddressController } from '@modules/stores/useCases/createAddress/CreateStoreAddressController';
+import { CreateCategoryStoresController } from '@modules/stores/useCases/createCategoryStores/CreateCategoryStoresController';
 import { CreateStoreController } from '@modules/stores/useCases/createStore/CreateStoreController';
 import { CreateStoreCategoryController } from '@modules/stores/useCases/createStoreCategory/CreateStoreCategoryController';
 import { DeleteStoreController } from '@modules/stores/useCases/deleteStore/DeleteStoreController';
@@ -18,6 +19,7 @@ const deleteStoreController = new DeleteStoreController();
 const updateStoreController = new UpdateStoreController();
 const updateAddressStoreController = new UpdateStoreAddressStoreController();
 const createStoreCategoryController = new CreateStoreCategoryController();
+const createCategoryStoresController = new CreateCategoryStoresController();
 
 storesRoutes.post('/', ensureAuthenticated, createStoreController.handle);
 
@@ -52,6 +54,13 @@ storesRoutes.post(
   ensureAuthenticated,
   ensureAdmin,
   createStoreCategoryController.handle,
+);
+
+storesRoutes.post(
+  '/categories',
+  ensureAuthenticated,
+  ensureShopkeeper,
+  createCategoryStoresController.handle,
 );
 
 export default storesRoutes;

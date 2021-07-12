@@ -4,4 +4,5 @@ import { StoreCategory } from '../infra/typeorm/entities/StoreCategory';
 export interface IStoreCategoryRepository {
   create(date: ICreateStoreCategoryDTO): Promise<StoreCategory>;
   findByName(name: string): Promise<StoreCategory>;
+  findByIds(ids: string[]): Promise<StoreCategory[]>;
 }
