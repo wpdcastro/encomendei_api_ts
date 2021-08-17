@@ -8,7 +8,8 @@ class UpdateStoreController {
     const { id: user_id } = request.user;
     const { id: store_id } = request.store;
 
-    const { name, description, cnpj, phone, isDelivery } = request.body;
+    const { name, description, cnpj, phone, isDelivery, storeCategories_id } =
+      request.body;
 
     const updateStoreUseCase = container.resolve(UpdateStoreUseCase);
 
@@ -20,6 +21,7 @@ class UpdateStoreController {
       cnpj,
       phone,
       isDelivery,
+      storeCategories_id,
     });
 
     return response.json(store).send();

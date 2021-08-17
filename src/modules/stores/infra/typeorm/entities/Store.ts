@@ -6,6 +6,7 @@ import {
   JoinColumn,
   JoinTable,
   ManyToMany,
+  OneToMany,
   OneToOne,
   PrimaryColumn,
   UpdateDateColumn,
@@ -13,6 +14,7 @@ import {
 import { v4 as uuidV4 } from 'uuid';
 
 import { Address } from './Address';
+import { Product } from './Product';
 import { StoreCategory } from './StoreCategory';
 
 @Entity('stores')
@@ -56,6 +58,9 @@ class Store {
     inverseJoinColumns: [{ name: 'store_category_id' }],
   })
   storeCategories: StoreCategory[];
+
+  @OneToMany(() => Product, product => product.store)
+  products: Product[];
 
   @CreateDateColumn()
   created_at: Date;

@@ -1,4 +1,5 @@
 import { Store } from '@modules/stores/infra/typeorm/entities/Store';
+import { IStoreCategoryRepository } from '@modules/stores/repositories/IStoreCategoryRepository';
 import { IStoresRepository } from '@modules/stores/repositories/IStoresRepository';
 import { cnpj as cnpjValidator } from 'cpf-cnpj-validator';
 import { inject, injectable } from 'tsyringe';
@@ -14,6 +15,7 @@ interface IRequest {
   isDelivery: boolean;
   user_id: string;
   store_id: string;
+  storeCategories_id?: string[];
 }
 
 @injectable()
@@ -24,6 +26,9 @@ class UpdateStoreUseCase {
 
     @inject('DayjsDateProvider')
     private dateProvider: IDateProvider,
+
+    @inject('StoreCategoryRepository')
+    private storeCategoryRepository: IStoreCategoryRepository,
   ) {}
 
   async execute({
@@ -34,6 +39,7 @@ class UpdateStoreUseCase {
     isDelivery,
     user_id,
     cnpj,
+    storeCategories_id,
   }: IRequest): Promise<Store> {
     if (cnpj) {
       const cnpjIsValid = cnpjValidator.isValid(cnpj);
@@ -45,8 +51,16 @@ class UpdateStoreUseCase {
 
     const cnpjAlreadyRegistered = await this.storeRepository.findByCnpj(cnpj);
 
-    if (cnpjAlreadyRegistered) {
-      throw new AppError('This cnpj is already registered');
+    if (!cnpjAlreadyRegistered) {
+      throw new AppError('No registered store with this cnpj to update');
+    }
+
+    const storesCategories = await this.storeCategoryRepository.findByIds(
+      storeCategories_id,
+    );
+
+    if (!storesCategories) {
+      throw new AppError('Categories does not exists');
     }
 
     const updated_at = this.dateProvider.dateNow();
@@ -57,8 +71,10 @@ class UpdateStoreUseCase {
       description,
       phone,
       isDelivery,
+      cnpj,
       user_id,
       updated_at,
+      storeCategories: storesCategories,
     });
 
     return store;

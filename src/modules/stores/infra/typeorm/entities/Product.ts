@@ -2,13 +2,17 @@ import {
   Column,
   CreateDateColumn,
   Entity,
+  JoinColumn,
+  ManyToOne,
   PrimaryColumn,
   UpdateDateColumn,
 } from 'typeorm';
 import { v4 as uuidV4 } from 'uuid';
 
-@Entity('users')
-class User {
+import { Store } from './Store';
+
+@Entity('products')
+class Product {
   @PrimaryColumn()
   id?: string;
 
@@ -16,22 +20,20 @@ class User {
   name: string;
 
   @Column()
-  email: string;
+  description: string;
 
   @Column()
-  confirmedEmail: boolean;
+  price: number;
 
   @Column()
-  cpf: string;
+  isActive: boolean;
 
   @Column()
-  password: string;
+  store_id: string;
 
-  @Column()
-  isAdmin?: boolean;
-
-  @Column()
-  isShopkeeper: boolean;
+  @ManyToOne(() => Store, store => store.products)
+  @JoinColumn({ name: 'store_id' })
+  store: Store;
 
   @CreateDateColumn()
   created_at: Date;
@@ -46,4 +48,4 @@ class User {
   }
 }
 
-export { User };
+export { Product };

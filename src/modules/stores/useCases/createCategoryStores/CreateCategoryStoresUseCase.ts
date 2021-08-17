@@ -31,6 +31,10 @@ class CreateCategoryStoresUseCase {
       storeCategories_id,
     );
 
+    if (!storesCategories) {
+      throw new AppError('Categories does not exists');
+    }
+
     storeExists.storeCategories = storesCategories;
 
     await this.storesRepository.create(storeExists);

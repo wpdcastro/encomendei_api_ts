@@ -37,6 +37,8 @@ export class CreateStoresCategoriesStores1624911224521
         referencedTableName: 'stores',
         referencedColumnNames: ['id'],
         columnNames: ['store_id'],
+        onDelete: 'SET NULL',
+        onUpdate: 'SET NULL',
       }),
     );
 
