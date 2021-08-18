@@ -1,4 +1,4 @@
-import { ICreateStoreCategoryDTO } from '@modules/stores/dtos/ICreateStoreCategoryDTO';
+import { ICreateCategoryDTO } from '@modules/stores/dtos/ICreateCategoryDTO';
 import { IStoreCategoryRepository } from '@modules/stores/repositories/IStoreCategoryRepository';
 import { getRepository, Repository } from 'typeorm';
 
@@ -16,7 +16,7 @@ class StoreCategoryRepository implements IStoreCategoryRepository {
     updated_at,
     name,
     color,
-  }: ICreateStoreCategoryDTO): Promise<StoreCategory> {
+  }: ICreateCategoryDTO): Promise<StoreCategory> {
     const StoreCategory = this.repository.create({
       id,
       name,

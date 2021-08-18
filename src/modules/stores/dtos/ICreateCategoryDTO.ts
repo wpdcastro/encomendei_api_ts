@@ -1,4 +1,4 @@
-export interface ICreateStoreCategoryDTO {
+export interface ICreateCategoryDTO {
   id?: string;
   name: string;
   color: string;

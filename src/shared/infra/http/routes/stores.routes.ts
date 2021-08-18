@@ -1,5 +1,5 @@
 import { CreateStoreAddressController } from '@modules/stores/useCases/createAddress/CreateStoreAddressController';
-import { CreateCategoryStoresController } from '@modules/stores/useCases/createCategoryStores/CreateCategoryStoresController';
+import { CreateCategoryStoresController } from '@modules/stores/useCases/createCategoryOnStores/CreateCategoryStoresController';
 import { CreateStoreController } from '@modules/stores/useCases/createStore/CreateStoreController';
 import { CreateStoreCategoryController } from '@modules/stores/useCases/createStoreCategory/CreateStoreCategoryController';
 import { DeleteStoreController } from '@modules/stores/useCases/deleteStore/DeleteStoreController';
