@@ -1,15 +1,16 @@
+import { User } from '@modules/accounts/infra/typeorm/entities/user';
+import { Store } from '@modules/stores/infra/typeorm/entities/Store';
 import {
   Column,
   CreateDateColumn,
   Entity,
   JoinColumn,
+  ManyToOne,
   OneToOne,
   PrimaryColumn,
   UpdateDateColumn,
 } from 'typeorm';
 import { v4 as uuidV4 } from 'uuid';
-
-import { Store } from './Store';
 
 export enum AddressType {
   WORK = 'work',
@@ -54,12 +55,19 @@ class Address {
   @Column()
   additional_indications?: string;
 
+  @Column()
+  store_id?: string;
+
   @OneToOne(() => Store)
   @JoinColumn({ name: 'store_id' })
   store: Store;
 
   @Column()
-  store_id?: string;
+  user_id?: string;
+
+  @ManyToOne(() => User, user => user.addresses)
+  @JoinColumn({ name: 'user_id' })
+  user: User;
 
   @CreateDateColumn()
   created_at: Date;

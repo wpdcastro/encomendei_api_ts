@@ -1,8 +1,7 @@
-import { ICreateStoreAddressDTO } from '@modules/stores/dtos/ICreateStoreAddressDTO';
-import { IAddressRepository } from '@modules/stores/repositories/IAddressRepository';
+import { ICreateAddressDTO } from '@modules/addresses/dtos/ICreateAddressDTO';
+import { Address } from '@modules/addresses/infra/typeorm/entities/Address';
+import { IAddressRepository } from '@modules/addresses/repositories/IAddressRepository';
 import { getRepository, Repository } from 'typeorm';
-
-import { Address } from '../entities/Address';
 
 class AddressRepository implements IAddressRepository {
   private repository: Repository<Address>;
@@ -24,9 +23,10 @@ class AddressRepository implements IAddressRepository {
     phone,
     additional_indications,
     store_id,
+    user_id,
     id,
     updated_at,
-  }: ICreateStoreAddressDTO): Promise<Address> {
+  }: ICreateAddressDTO): Promise<Address> {
     const Address = this.repository.create({
       name,
       state,
@@ -40,6 +40,7 @@ class AddressRepository implements IAddressRepository {
       phone,
       additional_indications,
       store_id,
+      user_id,
       id,
       updated_at,
     });
@@ -51,6 +52,10 @@ class AddressRepository implements IAddressRepository {
 
   async findByStoreId(store_id: string): Promise<Address> {
     return this.repository.findOne({ store_id });
+  }
+
+  async findByUserId(user_id: string): Promise<Address> {
+    return this.repository.findOne({ user_id });
   }
 
   async deleteById(id: string): Promise<void> {

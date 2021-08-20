@@ -1,6 +1,6 @@
 import { AddressType } from '../infra/typeorm/entities/Address';
 
-export interface ICreateStoreAddressDTO {
+export interface ICreateAddressDTO {
   id?: string;
   name: string;
   state: string;
@@ -14,5 +14,6 @@ export interface ICreateStoreAddressDTO {
   phone: number;
   additional_indications?: string;
   store_id?: string;
+  user_id?: string;
   updated_at?: Date;
 }

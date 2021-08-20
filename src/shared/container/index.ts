@@ -7,12 +7,12 @@ import UsersRepository from '@modules/accounts/infra/typeorm/repositories/UsersR
 import { UsersTokensRepository } from '@modules/accounts/infra/typeorm/repositories/UserTokensRepository';
 import IUsersRepository from '@modules/accounts/repositories/IUsersRepository';
 import { IUsersTokensRepository } from '@modules/accounts/repositories/IUsersTokensRepository';
-import { AddressRepository } from '@modules/stores/infra/typeorm/repositories/AddressRepository';
+import { AddressRepository } from '@modules/addresses/infra/typeorm/repositories/AddressRepository';
+import { IAddressRepository } from '@modules/addresses/repositories/IAddressRepository';
 import { ProductCategoryRepository } from '@modules/stores/infra/typeorm/repositories/ProductCategoryRepository';
 import { ProductsRepository } from '@modules/stores/infra/typeorm/repositories/ProductsRepository';
 import { StoreCategoryRepository } from '@modules/stores/infra/typeorm/repositories/StoreCategoryRepository';
 import { StoresRepository } from '@modules/stores/infra/typeorm/repositories/StoresRepository';
-import { IAddressRepository } from '@modules/stores/repositories/IAddressRepository';
 import { IProductCategoryRepository } from '@modules/stores/repositories/IProductCategoryRepository';
 import { IProductsRepository } from '@modules/stores/repositories/IProductsRepository';
 import { IStoreCategoryRepository } from '@modules/stores/repositories/IStoreCategoryRepository';

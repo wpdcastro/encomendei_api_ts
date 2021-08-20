@@ -1,7 +1,9 @@
+import { Address } from '@modules/addresses/infra/typeorm/entities/Address';
 import {
   Column,
   CreateDateColumn,
   Entity,
+  OneToMany,
   PrimaryColumn,
   UpdateDateColumn,
 } from 'typeorm';
@@ -32,6 +34,9 @@ class User {
 
   @Column()
   isShopkeeper: boolean;
+
+  @OneToMany(() => Address, address => address.user)
+  addresses: Address[];
 
   @CreateDateColumn()
   created_at: Date;

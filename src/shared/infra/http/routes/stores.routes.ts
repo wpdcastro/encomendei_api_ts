@@ -1,9 +1,9 @@
-import { CreateStoreAddressController } from '@modules/stores/useCases/createAddress/CreateStoreAddressController';
+import { CreateStoreAddressController } from '@modules/addresses/useCases/createStoreAddress/CreateStoreAddressController';
+import { UpdateStoreAddressStoreController } from '@modules/addresses/useCases/updateAddressStore/UpdateAddressStoreController';
 import { CreateCategoryStoresController } from '@modules/stores/useCases/createCategoryOnStores/CreateCategoryStoresController';
 import { CreateStoreController } from '@modules/stores/useCases/createStore/CreateStoreController';
 import { CreateStoreCategoryController } from '@modules/stores/useCases/createStoreCategory/CreateStoreCategoryController';
 import { DeleteStoreController } from '@modules/stores/useCases/deleteStore/DeleteStoreController';
-import { UpdateStoreAddressStoreController } from '@modules/stores/useCases/updateAddressStore/UpdateAddressStoreController';
 import { UpdateStoreController } from '@modules/stores/useCases/updateStore/UpdateStoreController';
 import { Router } from 'express';
 

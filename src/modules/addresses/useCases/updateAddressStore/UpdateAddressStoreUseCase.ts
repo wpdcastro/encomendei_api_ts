@@ -1,8 +1,8 @@
 import {
   Address,
   AddressType,
-} from '@modules/stores/infra/typeorm/entities/Address';
-import { IAddressRepository } from '@modules/stores/repositories/IAddressRepository';
+} from '@modules/addresses/infra/typeorm/entities/Address';
+import { IAddressRepository } from '@modules/addresses/repositories/IAddressRepository';
 import { inject, injectable } from 'tsyringe';
 
 import { IDateProvider } from '@shared/container/providers/DateProvider/IDateProvider';

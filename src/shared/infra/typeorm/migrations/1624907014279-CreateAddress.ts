@@ -70,6 +70,11 @@ export default class CreateAddress1624907014279 implements MigrationInterface {
             isNullable: true,
           },
           {
+            name: 'user_id',
+            type: 'uuid',
+            isNullable: true,
+          },
+          {
             name: 'created_at',
             type: 'timestamp',
             default: 'now()',
@@ -94,9 +99,23 @@ export default class CreateAddress1624907014279 implements MigrationInterface {
         onUpdate: 'SET NULL',
       }),
     );
+
+    await queryRunner.createForeignKey(
+      'addresses',
+      new TableForeignKey({
+        name: 'FKAddressesUser',
+        referencedTableName: 'users',
+        referencedColumnNames: ['id'],
+        columnNames: ['user_id'],
+        onDelete: 'SET NULL',
+        onUpdate: 'SET NULL',
+      }),
+    );
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
+    await queryRunner.dropForeignKey('addresses', 'FKAddressesUser');
+
     await queryRunner.dropForeignKey('addresses', 'FKAddressesStore');
 
     await queryRunner.dropTable('addresses');

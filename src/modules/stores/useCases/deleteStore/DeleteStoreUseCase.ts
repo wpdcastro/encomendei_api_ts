@@ -1,4 +1,4 @@
-import { IAddressRepository } from '@modules/stores/repositories/IAddressRepository';
+import { IAddressRepository } from '@modules/addresses/repositories/IAddressRepository';
 import { IStoresRepository } from '@modules/stores/repositories/IStoresRepository';
 import { inject, injectable } from 'tsyringe';
 

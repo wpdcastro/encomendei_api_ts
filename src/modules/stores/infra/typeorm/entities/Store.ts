@@ -1,4 +1,5 @@
 import { User } from '@modules/accounts/infra/typeorm/entities/user';
+import { Address } from '@modules/addresses/infra/typeorm/entities/Address';
 import {
   Column,
   CreateDateColumn,
@@ -13,7 +14,6 @@ import {
 } from 'typeorm';
 import { v4 as uuidV4 } from 'uuid';
 
-import { Address } from './Address';
 import { Product } from './Product';
 import { StoreCategory } from './StoreCategory';
 
